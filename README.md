@@ -79,15 +79,6 @@ Open [http://localhost:3000](http://localhost:3000) to see Capling in action!
 4. **Level up Capling** as you develop better habits
 5. **Learn** from personalized AI-generated financial lessons
 
-## Hackathon Highlights
-
-- **AI Integration**: Seamless GPT-4 integration for intelligent financial analysis
-- **Real-time Updates**: Live data synchronization across all components
-- **Gamification**: Engaging user experience that makes finance fun
-- **Smart Automation**: AI automatically adjusts budgets and provides insights
-- **Modern Stack**: Built with latest Next.js, TypeScript, and Supabase
-- **Responsive Design**: Beautiful UI that works on all devices
-
 ## Environment Setup
 
 | Variable | Description | Required |
