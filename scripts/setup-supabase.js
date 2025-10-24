@@ -15,17 +15,23 @@ if (fs.existsSync(envPath)) {
 }
 
 // Remove existing Supabase variables
-const newEnvContent = envContent.split('\n').filter(line => 
-  !line.startsWith('NEXT_PUBLIC_SUPABASE_URL=') && 
-  !line.startsWith('NEXT_PUBLIC_SUPABASE_ANON_KEY=')
-).join('\n')
+const newEnvContent = envContent
+  .split('\n')
+  .filter(
+    (line) =>
+      !line.startsWith('NEXT_PUBLIC_SUPABASE_URL=') &&
+      !line.startsWith('NEXT_PUBLIC_SUPABASE_ANON_KEY=')
+  )
+  .join('\n')
 
-// Add Supabase configuration
+// Add Supabase configuration for local dev
+// Replace <YOUR_LOCAL_ANON_KEY> with your local Supabase anon key
 const supabaseConfig = `
 
 # Supabase Configuration (Local Development)
-NEXT_PUBLIC_SUPABASE_URL= NEXT_PUBLIC_SUPABASE_URL
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0`
+NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<YOUR_LOCAL_ANON_KEY>
+`
 
 const updatedEnvContent = `${newEnvContent.trim()}${supabaseConfig}`
 
@@ -33,12 +39,13 @@ fs.writeFileSync(envPath, updatedEnvContent.trim() + '\n')
 console.log('✅ Supabase environment variables added to .env.local\n')
 
 console.log('🚀 Next steps:')
-console.log('1. Start your Supabase instance: supabase start')
+console.log('1. Start your local Supabase instance: supabase start')
 console.log('2. Apply the database migrations: supabase db reset')
 console.log('3. Restart your development server: npm run dev')
 console.log('4. Create an account and start using Capling!\n')
 
-console.log('💡 Your Supabase instance will be available at:')
+console.log('💡 Your local Supabase instance will be available at:')
 console.log('   - API: http://127.0.0.1:54321')
 console.log('   - Studio: http://127.0.0.1:54323')
 console.log('   - Database: postgresql://postgres:postgres@127.0.0.1:54322/postgres\n')
+
